@@ -61,3 +61,31 @@ img { max-width: 100%; }
         scroll-behavior: auto !important;
     }
 }
+
+/* Grille de livres, utilisée par la liste, les genres, les auteurs et les livres similaires */
+.book-grid {
+    display: grid;
+    gap: var(--space-4);
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+}
+
+/* Pastilles de genre */
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-3);
+}
+.chip {
+    display: inline-block;
+    padding: var(--space-1) var(--space-3);
+    border: 1px solid var(--accent);
+    border-radius: var(--radius-pill);
+    color: var(--text);
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+.chip:hover { background: color-mix(in srgb, var(--accent) 20%, transparent); }
+.chip span { color: var(--text-muted); }

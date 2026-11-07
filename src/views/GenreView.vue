@@ -4,6 +4,7 @@ import { useRoute } from 'vue-router'
 import { fetchGenre } from '../api/catalog'
 import { useThemeStore } from '../stores/theme'
 import StatusMessage from '../components/StatusMessage.vue'
+import BookList from '../components/BookList.vue'
 
 const route = useRoute()
 const theme = useThemeStore()
@@ -24,8 +25,7 @@ async function load(slug) {
 }
 
 // Se relance aussi quand on passe d'un genre à un sous-genre (même composant réutilisé)
-watch(() => route.params.slug, (slug) => load(slug), { immediate: true })
-
+watch(() => route.params.slug, (slug) => { if (slug) load(slug) }, { immediate: true })
 // En quittant la page, retour au thème neutre
 onBeforeUnmount(() => theme.reset())
 
@@ -71,8 +71,12 @@ const bannerStyle = computed(() => {
       </ul>
     </section>
 
-    <section class="container books-placeholder">
-      <p>La liste des livres de ce genre arrive à l'étape suivante.</p>
+    <section class="container books">
+      <h2>Livres</h2>
+      <BookList
+          :genre-slug="genre.slug"
+          empty-message="Aucun livre dans ce genre pour le moment."
+      />
     </section>
   </template>
 </template>
@@ -92,18 +96,8 @@ const bannerStyle = computed(() => {
 .back { display: inline-block; margin-bottom: var(--space-3); }
 
 .subgenres { padding: var(--space-5) 0; }
-.subgenres ul { display: flex; flex-wrap: wrap; gap: var(--space-2); list-style: none; padding: 0; margin: 0; }
-.chip {
-  display: inline-block;
-  padding: var(--space-2) var(--space-3);
-  border: 1px solid var(--accent);
-  border-radius: var(--radius-pill);
-  color: var(--text);
-  text-decoration: none;
-  transition: background-color 0.2s;
-}
-.chip:hover { background: color-mix(in srgb, var(--accent) 20%, transparent); }
-.chip span { color: var(--text-muted); }
 
-.books-placeholder { padding: var(--space-5) 0 var(--space-7); color: var(--text-muted); }
+
+
+.books { padding: var(--space-5) 0 var(--space-7); }
 </style>

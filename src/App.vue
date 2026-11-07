@@ -9,6 +9,7 @@
       </RouterLink>
       <nav aria-label="Navigation principale">
         <RouterLink :to="{ name: 'home' }">Accueil</RouterLink>
+        <RouterLink :to="{ name: 'books' }">Livres</RouterLink>
         <RouterLink :to="{ name: 'genres' }">Genres</RouterLink>
       </nav>
     </div>

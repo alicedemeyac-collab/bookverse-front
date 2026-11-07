@@ -1,0 +1,31 @@
+:root {
+    /* Thème neutre BookVerse, remplacé dynamiquement sur les pages de genre */
+    --bg: #14101f;
+    --primary: #8b5cf6;
+    --accent: #f472b6;
+    --on-accent: #14101f;
+    --text: #f5f0e8;
+    --text-muted: #b8b0c8;
+    --font-heading: 'Playfair Display', Georgia, serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+
+    /* Dérivées : se recalculent quand --bg ou --text changent */
+    --surface: color-mix(in srgb, var(--bg) 88%, var(--text) 12%);
+    --border: color-mix(in srgb, var(--text) 18%, transparent);
+    --shadow: 0 8px 24px color-mix(in srgb, var(--primary) 30%, transparent);
+
+    --error: #f87171;
+
+    /* Grille de 8 px */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 16px;
+    --space-4: 24px;
+    --space-5: 32px;
+    --space-6: 48px;
+    --space-7: 64px;
+
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-pill: 999px;
+}
